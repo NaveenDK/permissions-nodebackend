@@ -1,9 +1,21 @@
 const express = require('express');
 const app = express();
+const morgan = require("morgan");
 
-app.get('/', (req,res)=>{
-    res.send("Hello")
-})
+//bring in routes
+const {getPosts} = require('./routes/post');
+
+ 
+
+//middleware
+app.use(morgan('dev'));
+ 
+
+
+
+
+
+app.get('/',  getPosts )
 
 const port = 8083
 app.listen(port,()=>{
