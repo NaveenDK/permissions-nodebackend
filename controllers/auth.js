@@ -103,7 +103,7 @@ exports.orgsignin = (req,res)=>{
     const token = jwt.sign({_id:organization._id},process.env.JWT_SECRET);
 
     //persist token as 't' in cookie with expiry 
-    res.cookie("t",token, {expire:new Date() + 9999})
+    res.cookie("to",token, {expire:new Date() + 9999})
 
     //return res with user and token
 
@@ -112,5 +112,20 @@ exports.orgsignin = (req,res)=>{
     return res.json({token, organization:{_id, email, name, mobile}})
 
     })
+
+}
+
+exports.signout = (req,res)=>{
+    res.clearCookie('t');
+    return res.json({message: "signout success!"})
+
+
+    
+}
+
+
+exports.orgsignout = (req,res)=>{
+    res.clearCookie('to');
+    return res.json({message: "signout success!"})
 
 }
