@@ -66,7 +66,7 @@ individualSchema.methods = {
 
     authenticate:function(plainText){
 
-        return this.encryptPassword(plainText) == this
+        return this.encryptPassword(plainText) === this.hashed_password
     },
 
 
@@ -76,7 +76,7 @@ individualSchema.methods = {
         try{
             return crypto.createHmac ('sha1',this.salt)
             .update(password)
-            .digest();
+            .digest("hex");
         }
         catch(err){
             return"";
