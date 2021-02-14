@@ -34,7 +34,11 @@ const organizationSchema = new mongoose.Schema({
         type:Date,
         default:Date.now
     },
-    updated:Date
+    updated:Date,
+    resetPasswordLink:{
+        data:String,
+        default:""
+    }
 })
 
 
